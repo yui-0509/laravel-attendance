@@ -1,4 +1,4 @@
-# laravel-docker-template
+# laravel-attendance
 
 ## アプリ概要
 出退勤登録や休憩時間の登録、勤怠の修正や申請ができるアプリです。
