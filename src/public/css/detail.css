@@ -1,0 +1,258 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", YuGothic, "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+    background: #F0EFF2;
+    letter-spacing: .02em;
+}
+
+.page {
+    min-height: 100%;
+    display: grid;
+    place-items: center;
+    padding: 60px 18px;
+}
+
+.sheet {
+    width: min(800px, 100%);
+    background: transparent;
+}
+
+/* カード全体 */
+.detail-card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.sheet__title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 30px 10px;
+    position: relative;
+    color: #000000;
+}
+
+.sheet__title::before {
+    content: "";
+    position: absolute;
+    left: -16px;
+    top: 4px;
+    width: 6px;
+    height: 24px;
+    background: #000000;
+}
+
+/* 各行 */
+.detail-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    align-items: center;
+    gap: 16px;
+    padding: 25px 28px;
+    border-top: 2px solid #E1E1E1;
+}
+
+.detail-card>.detail-row:first-child {
+    border-top: none;
+}
+
+.detail-label {
+    color: #737373;
+    font-weight: 700;
+    letter-spacing: .06em;
+    margin-left: 10px;
+}
+
+.detail-value {
+    color: #000;
+    font-weight: 700;
+}
+
+.detail-value--center {
+    display: flex;
+    justify-content: start;
+    margin-left: 105px;
+}
+
+.detail-strong {
+    font-weight: 700;
+    letter-spacing: .16em;
+}
+
+.detail-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.detail-split .detail-strong:first-child {
+    justify-self: center;
+}
+
+.detail-split .detail-strong:last-child {
+    justify-self: start;
+    margin-left: 22px;
+}
+
+.detail-range {
+    display: grid;
+    grid-template-columns: auto 28px auto;
+    align-items: center;
+    gap: 16px;
+    justify-content: start;
+    margin-left: 80px;
+}
+
+.pill_left,.pill_right {
+    display: inline-block;
+    width: 100px;
+    height: 32px;
+    box-sizing: border-box;
+    padding: 0 12px;
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+    background: #FFFFFF;
+    color: #000;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 16px;
+}
+
+.pill_left {
+    margin-right: 20px;
+}
+
+.pill_right {
+    margin-left: 20px;
+}
+
+.pill-static_left,.pill-static_right {
+    display: inline-block;
+    width: 100px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: #000;
+    border: none;
+}
+
+.pill-static_left {
+    margin-right: 20px;
+}
+
+.pill-static_right {
+    margin-left: 20px;
+}
+
+.tilde {
+    color: #000000;
+    font-weight: 700;
+    margin: 0 5px;
+}
+
+.textarea-like {
+    display: block;
+    width: 54%;
+    min-height: 76px;
+    border: 1px solid #D9D9D9;
+    border-radius: 4px;
+    padding: 5px 8px;
+    background: #FFFFFF;
+    color: #000;
+    font-weight: 700;
+    margin-left: 80px;
+}
+
+.textarea-static {
+    display: block;
+    width: 54%;
+    min-height: 76px;
+    border: none;
+    padding: 20px 8px;
+    background: #FFFFFF;
+    color: #000;
+    font-weight: 700;
+    margin-left: 80px;
+}
+
+.detail-actions {
+    margin: 30px auto 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.btn-primary {
+    background: #000000;
+    color: #FFFFFF;
+    padding: 10px 35px;
+}
+
+.btn-primary:hover {
+    opacity: .7;
+}
+
+.pending-note {
+    color: #FF000080;
+    font-weight: 700;
+    letter-spacing: .06em;
+    margin: 20px 0 0 0;
+    text-align: right;
+}
+
+.is-invalid {
+    border-color: #e11;
+}
+
+.form__error {
+    color: #e11;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.alert-error {
+    background: #fee;
+    color: #a00;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+.detail-range {
+    display: grid;
+    grid-template-columns: auto 28px auto;
+    align-items: start;
+    gap: 16px;
+    justify-content: start;
+    margin-left: 80px;
+}
+
+.range-col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+button.btn:disabled {
+    background-color: #696969;
+    color: #FFFFFF;
+    padding: 10px 15px;
+}
+
+button.btn:disabled:hover {
+    background-color: #696969;
+    opacity: 1;
+}

@@ -1,0 +1,193 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", YuGothic, "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+    background: #F0EFF2;
+    letter-spacing: .02em;
+}
+
+/* ページ枠 */
+.page {
+    min-height: 100%;
+    display: grid;
+    align-items: start;
+    justify-items: center;
+    padding: 48px 18px;
+}
+
+.sheet {
+    width: min(800px, 100%);
+    background: transparent;
+}
+
+.sheet__title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 22px 8px;
+    position: relative;
+    color: #000000;
+}
+
+.sheet__title::before {
+    content: "";
+    position: absolute;
+    left: -16px;
+    top: 4px;
+    width: 6px;
+    height: 24px;
+    background: #000000;
+}
+
+/* 月ナビ */
+.month-nav, .day-nav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.month-nav__btn,
+.day-nav__btn {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #737373;
+    text-decoration: none;
+}
+
+.month-nav__btn--right,
+.day-nav__btn--right {
+    justify-self: end;
+}
+
+.month-nav__btn .chev,
+.day-nav__btn .chev {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.month-nav__btn img,
+.day-nav__btn img {
+    height: 12px;
+    width: auto;
+    align-items: center;
+}
+
+.month-nav__btn--right .chev img,
+.day-nav__btn--right .chev img {
+    transform: rotate(180deg);
+}
+
+.arrow {
+    opacity: 0.3;
+}
+
+.month-nav__current, .day-nav__current {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-self: center;
+    padding: 10px 14px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.month-nav__current img,
+.day-nav__current img {
+    height: 20px;
+    width: auto;
+    align-items: center;
+}
+
+.cal-icn {
+    font-size: 16px;
+}
+
+.month-nav__text, .day-nav__text {
+    font-variant-numeric: tabular-nums;
+}
+
+/* テーブル */
+.table-wrap {
+    margin-top: 50px;
+    background: #FFFFFF;
+    color: #737373;
+    border-radius: 10px;
+    overflow: hidden;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.attendance {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+.attendance thead th {
+    text-align: center;
+    padding: 8px 8px;
+    border-bottom: 3px solid #E1E1E1;
+}
+
+.attendance tbody td {
+    padding: 8px 8px;
+    text-align: center;
+    border-bottom: 2px solid #E1E1E1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 1.5px;
+}
+
+/* 「詳細」リンク */
+.attendance a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.attendance a:hover {
+    text-decoration: underline;
+}
+
+.actions {
+    margin: 30px auto 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.btn-primary {
+    background: #000000;
+    color: #FFFFFF;
+    padding: 10px 35px;
+}
+
+.btn-primary:hover {
+    opacity: .7;
+}
+

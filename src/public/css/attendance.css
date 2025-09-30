@@ -1,0 +1,64 @@
+body {
+    background-color: #F0EFF2;
+}
+
+.attendance {
+    text-align: center;
+    color: #000;
+    margin-top: 200px;
+}
+
+.attendance__status {
+    display: inline-block;
+    padding: 4px 17px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #696969;
+    background-color: #C8C8C8;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+}
+
+.attendance__date {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.attendance__time {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.attendance__btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 60px;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+    letter-spacing: 3px;
+
+    margin: 0 20px;
+}
+
+/* 休憩入／休憩戻用 */
+.attendance__btn--break {
+    background-color: #fff;
+    color: #000;
+    padding: 10px 50px;
+}
+
+.attendance__message {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 30px;
+}
+
+
+

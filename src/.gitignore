@@ -13,3 +13,9 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/docker/mysql/data/*
+.DS_Store
+src/storage/logs/*
+src/storage/framework/sessions/*
+src/storage/framework/cache/*
+src/storage/framework/views/*

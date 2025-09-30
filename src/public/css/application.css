@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", YuGothic, "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+    background: #F0EFF2;
+    letter-spacing: .02em;
+}
+
+.page {
+    min-height: 100%;
+    display: grid;
+    place-items: flex-start;
+    padding: 48px 18px;
+}
+
+.sheet {
+    width: min(800px, 100%);
+    margin: 0 auto;
+}
+
+.sheet__title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 22px 10px;
+    position: relative;
+    color: #000000;
+}
+
+.sheet__title::before {
+    content: "";
+    position: absolute;
+    left: -16px;
+    top: 4px;
+    width: 6px;
+    height: 24px;
+    background: #000000;
+}
+
+/* タブ */
+.tabs {
+    display: flex;
+    gap: 100px;
+    padding: 10px 8px 10px 30px;
+    margin: 0 0 20px 0;
+    border-bottom: 1px solid #000000;
+}
+
+.tab {
+    position: relative;
+    display: inline-block;
+    padding: 10px 2px 0 2px;
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    letter-spacing: .06em;
+}
+
+.tab.is-active {
+    color: #000000;
+    font-weight: 700;
+}
+
+.list-card {
+    margin-top: 40px;
+    background: #FFFFFF;
+    color: #737373;
+    border-radius: 10px;
+    overflow: hidden;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.req-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+.req-table thead th {
+    text-align: center;
+    padding: 8px 8px;
+    border-bottom: 3px solid #E1E1E1;
+}
+
+.req-table tbody td {
+    padding: 8px 8px;
+    text-align: center;
+    border-bottom: 2px solid #E1E1E1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 1.5px;
+}
+
+/* 理由は少し長めを許容 */
+.reason {
+    max-width: 1px;
+    /* table-layout:fixed の省略幅を効かせるトリック */
+}
+
+/* 詳細リンク */
+.link-detail {
+    color: #000;
+    text-decoration: none;
+}
+
+.link-detail:hover {
+    text-decoration: underline;
+}
