@@ -104,4 +104,5 @@ MAIL_FROM_NAME="${APP_NAME}"
 
 - 開発環境：http://localhost/
 - ユーザー登録：http://localhost/register
+- 管理者ログイン：http://localhost/admin/login
 - phpMyAdmin：http://localhost:8080/
