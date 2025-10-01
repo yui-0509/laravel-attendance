@@ -92,8 +92,8 @@ MAIL_FROM_NAME="${APP_NAME}"
 docker-compose exec mysql bash
 mysql -u root -p
 //パスワードはrootと入力
-CREATE DATABASE IF NOT EXISTS test_database CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-GRANT ALL PRIVILEGES ON test_database.* TO 'laravel_user'@'%' IDENTIFIED BY 'laravel_pass';
+CREATE USER IF NOT EXISTS 'laravel_user'@'%' IDENTIFIED BY 'laravel_pass';
+GRANT ALL PRIVILEGES ON test_database.* TO 'laravel_user'@'%';
 FLUSH PRIVILEGES;
 EXIT;
 ```
