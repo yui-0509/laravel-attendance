@@ -87,8 +87,8 @@ MAIL_FROM_NAME="${APP_NAME}"
 
 ### 使用技術（実行環境）
 
-- php 7.3|^8.0
-- Laravel　^8.75
+- php 8.1
+- Laravel　8.75
 - MySQL 8.0.26
 - nginx 1.21.1
 - フロントエンド　Blade,CSS,JavaScript
