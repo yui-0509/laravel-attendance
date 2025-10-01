@@ -85,6 +85,49 @@ MAIL_FROM_NAME="${APP_NAME}"
 
 ユーザー登録後、認証メールが送信されます。メール本文内の「Verify Email Address」をクリックすると勤怠登録画面に遷移します。
 
+### テスト環境構築
+
+1.テスト用データベースを作成
+```sql
+docker-compose exec mysql bash
+mysql -u root -p
+//パスワードはrootと入力
+CREATE DATABASE IF NOT EXISTS test_database CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL PRIVILEGES ON test_database.* TO 'laravel_user'@'%' IDENTIFIED BY 'laravel_pass';
+FLUSH PRIVILEGES;
+EXIT;
+```
+
+2..env.testingを作成
+プロジェクト直下に .env.testing を作成し、以下のようにDB設定を変更してください。
+```env
+APP_ENV=testing
+APP_DEBUG=true
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=test_database
+DB_USERNAME=laravel_user
+DB_PASSWORD=laravel_pass
+
+MAIL_MAILER=log
+MAIL_FROM_ADDRESS=no-reply@example.com
+MAIL_FROM_NAME="Laravel Attendance (Test)"
+```
+
+3.テスト用マイグレーションとシーディングを実行
+```bash
+docker-compose exec php bash
+php artisan migrate:fresh --env=testing --seed
+```
+
+4.テスト実行
+```bash
+./vendor/bin/phpunit
+```
+
 ### 使用技術（実行環境）
 
 - php 8.1
