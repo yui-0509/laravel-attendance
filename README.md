@@ -12,7 +12,7 @@ CSV出力、メール認証(Mailtrap)、管理者による直接修正等を実�
 
 2.docker-compose.ymlのmysqlとphpmyadminに`platform:linux/x86_64`を追加
 
-3.DockerDesktopアプリを立ち上げる
+3.Docker Desktopアプリを立ち上げる
 
 4.`docker-compose up -d --build` 
 
@@ -45,7 +45,7 @@ DB_PASSWORD=laravel_pass
 
    `php artisan migrate` 
 
-6.シーディングの実行. 
+6.シーディングの実行 
 
    `php artisan db:seed` を実行することで、以下のダミーデータが登録されます。
 
@@ -83,7 +83,7 @@ MAIL_FROM_ADDRESS=no-reply@example.com
 MAIL_FROM_NAME="${APP_NAME}"
 ```
 
-ユーザー登録後、認証メールが送信されます。メール本文内の「Verify Email Address」をクリックすると勤怠登録画面に遷移します。
+ユーザー登録後、認証メールが送信されます。メール本文内の「認証はこちらから」をクリックするとMailtrap画面に遷移します。
 
 ### テスト環境構築
 
@@ -92,6 +92,7 @@ MAIL_FROM_NAME="${APP_NAME}"
 docker-compose exec mysql bash
 mysql -u root -p
 //パスワードはrootと入力
+CREATE DATABASE IF NOT EXISTS test_database CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE USER IF NOT EXISTS 'laravel_user'@'%' IDENTIFIED BY 'laravel_pass';
 GRANT ALL PRIVILEGES ON test_database.* TO 'laravel_user'@'%';
 FLUSH PRIVILEGES;
@@ -125,13 +126,13 @@ php artisan migrate:fresh --env=testing --seed
 
 4.テスト実行
 ```bash
-./vendor/bin/phpunit
+php artisan test
 ```
 
 ### 使用技術（実行環境）
 
 - php 8.1
-- Laravel　8.75
+- Laravel 8.75
 - MySQL 8.0.26
 - nginx 1.21.1
 - フロントエンド　Blade,CSS,JavaScript
