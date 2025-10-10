@@ -8,6 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class EmailVerificationRequest extends FormRequest
 {
     protected $unauthenticated_user;
+
     protected $guard;
 
     public function __construct(StatefulGuard $guard)
@@ -15,6 +16,7 @@ class EmailVerificationRequest extends FormRequest
         $this->unauthenticated_user = session()->get('unauthenticated_user');
         $this->guard = $guard;
     }
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -22,6 +24,9 @@ class EmailVerificationRequest extends FormRequest
      */
     public function authorize()
     {
+        if (! $this->unauthenticated_user) {
+            return false;
+        }
         if (! hash_equals(
             (string) $this->unauthenticated_user->getKey(),
             (string) $this->route('id')

@@ -66,10 +66,17 @@
               <td>{{ $fmtHM($day['break_min']) }}</td>
               <td>{{ $fmtHM($day['total_min']) }}</td>
               <td>
-                <a href="{{ route('attendance.show', [
-                    'id' => $day['record']->id ?? 0,
+                @if (!empty($day['record']))
+                  <a href="{{ route('attendance.show', [
+                    'id' => $day['record']->id,
                     'date' => $day['date']->format('Y-m-d')
                     ]) }}">詳細</a>
+                @else
+                  <button class="btn btn-detail btn-disabled"
+                    disabled
+                    aria-disabled="true"
+                    title="この日は勤怠が未登録です">詳細</button>
+                @endif
               </td>
             </tr>
           @endforeach

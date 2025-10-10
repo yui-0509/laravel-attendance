@@ -14,10 +14,11 @@ class Attendance extends Model
         'date',
         'clock_in',
         'clock_out',
+        'remark',
     ];
 
     protected $casts = [
-    'date' => 'date'
+        'date' => 'date',
     ];
 
     public function user()
@@ -40,10 +41,10 @@ class Attendance extends Model
         return $this->hasManyThrough(
             Application::class,
             NewAttendance::class,
-            'attendance_id',   // NewAttendance側 FK
-            'id',              // Application 側キー
-            'id',              // Attendance 側キー
-            'application_id'   // NewAttendance -> Application FK
+            'attendance_id',
+            'id',
+            'id',
+            'application_id'
         );
     }
 }

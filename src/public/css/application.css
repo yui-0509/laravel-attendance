@@ -35,7 +35,6 @@ body {
     background: #000000;
 }
 
-/* タブ */
 .tabs {
     display: flex;
     gap: 100px;
@@ -90,13 +89,10 @@ body {
     letter-spacing: 1.5px;
 }
 
-/* 理由は少し長めを許容 */
 .reason {
     max-width: 1px;
-    /* table-layout:fixed の省略幅を効かせるトリック */
 }
 
-/* 詳細リンク */
 .link-detail {
     color: #000;
     text-decoration: none;

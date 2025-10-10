@@ -1,0 +1,11 @@
+includes:
+  - vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+  paths:
+    - app
+    - routes
+    - tests
+  level: 5
+  checkMissingIterableValueType: false
+  memoryLimit: 512M

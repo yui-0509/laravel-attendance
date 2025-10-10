@@ -9,7 +9,7 @@ class NewAttendance extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['application_id','attendance_id','new_clock_in','new_clock_out'];
+    protected $fillable = ['application_id', 'attendance_id', 'new_clock_in', 'new_clock_out'];
 
     public function application()
     {

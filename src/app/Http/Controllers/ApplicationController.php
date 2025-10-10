@@ -7,18 +7,19 @@ use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
 {
-    public function index(Request $request) {
+    public function index(Request $request)
+    {
         $user = $request->user();
 
         $tab = $request->query('tab', 'pending');
-        if (!in_array($tab, ['pending', 'approved'], true)) {
+        if (! in_array($tab, ['pending', 'approved'], true)) {
             $tab = 'pending';
         }
 
         $applications = Application::with([
-                'user',
-                'newAttendance.attendance',
-            ])
+            'user',
+            'newAttendance.attendance',
+        ])
             ->where('user_id', $user->id)
             ->where('status', $tab)
             ->orderByDesc('created_at')

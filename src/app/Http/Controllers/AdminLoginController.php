@@ -2,21 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\LoginRequest;
 
 class AdminLoginController extends Controller
 {
-    public function create(){
+    public function create()
+    {
         return view('admin.auth.admin-login');
     }
 
-    public function store(LoginRequest $request){
+    public function store(LoginRequest $request)
+    {
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
+
             return redirect()->route('admin.attendance');
         }
 
@@ -25,7 +28,8 @@ class AdminLoginController extends Controller
         ])->onlyInput('email');
     }
 
-    public function destroy(Request $request){
+    public function destroy(Request $request)
+    {
         Auth::guard('admin')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

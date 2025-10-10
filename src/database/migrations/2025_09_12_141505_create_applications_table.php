@@ -18,7 +18,7 @@ class CreateApplicationsTable extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('admin_id')->nullable()->constrained('admins')->nullOnDelete();
             $table->text('remark')->nullable();
-            $table->enum('status', ['pending','approved'])->default('pending');
+            $table->enum('status', ['pending', 'approved'])->default('pending');
             $table->dateTime('approved_at')->nullable();
             $table->timestamps();
         });

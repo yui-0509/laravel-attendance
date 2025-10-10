@@ -2,14 +2,14 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-use Carbon\CarbonPeriod;
-use App\Models\User;
 use App\Models\Attendance;
 use App\Models\BreakTime;
+use App\Models\User;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class AttendanceDummySeeder extends Seeder
 {
@@ -39,25 +39,25 @@ class AttendanceDummySeeder extends Seeder
 
         $month = now()->startOfMonth();
         $start = $month->copy()->subMonths(2)->startOfMonth();
-        $end   = $month->copy()->endOfMonth();
+        $end = $month->copy()->endOfMonth();
 
         $period = CarbonPeriod::create($start, $end);
         $weeks = [];
         foreach ($period as $d) {
-            $key = $d->isoWeekYear . '-W' . str_pad($d->isoWeek, 2, '0', STR_PAD_LEFT);
+            $key = $d->isoWeekYear.'-W'.str_pad($d->isoWeek, 2, '0', STR_PAD_LEFT);
             $weeks[$key][] = $d->copy();
         }
 
-        $inTime   = '09:00:00';
-        $outTime  = '18:00:00';
+        $inTime = '09:00:00';
+        $outTime = '18:00:00';
         $restFrom = '12:00:00';
-        $restTo   = '13:00:00';
+        $restTo = '13:00:00';
 
         DB::transaction(function () use ($users, $weeks, $inTime, $outTime, $restFrom, $restTo) {
             foreach ($users as $user) {
                 foreach ($weeks as $key => $dates) {
                     $candidates = collect($dates)
-                    ->reject(fn (Carbon $d) => $d->isSunday());
+                        ->reject(fn (Carbon $d) => $d->isSunday());
 
                     if ($candidates->isEmpty()) {
                         continue;
@@ -77,7 +77,6 @@ class AttendanceDummySeeder extends Seeder
                             ]
                         );
 
-                        // 休憩（既存が無ければ作成）
                         BreakTime::firstOrCreate(
                             [
                                 'attendance_id' => $attendance->id, 'break_start' => $restFrom,

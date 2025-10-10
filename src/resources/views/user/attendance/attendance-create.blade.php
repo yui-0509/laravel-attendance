@@ -12,8 +12,8 @@
     <div class="attendance">
         <div class="attendance__status" aria-live="polite"></div>
 
-        <div class="attendance__date"></div>
-        <div class="attendance__time"></div>
+        <div class="attendance__date">{{ now()->format('Y年n月j日(D)') }}</div>
+        <div class="attendance__time">{{ now()->format('H:i') }}</div>
 
         <div class="attendance__buttons">
             <button class="attendance__btn" id="clockInBtn">出勤</button>
@@ -27,7 +27,6 @@
         function updateClock() {
             const now = new Date();
 
-            // 日付の表示
             const options = {
                 year: 'numeric', month: 'long', day: 'numeric',
                 weekday: 'short'
@@ -35,15 +34,12 @@
             document.querySelector('.attendance__date').textContent =
                 now.toLocaleDateString('ja-JP', options);
 
-            // 時刻の表示（ゼロ埋め）
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             document.querySelector('.attendance__time').textContent = `${hours}:${minutes}`;
         }
 
-        // 最初に実行
         updateClock();
-        // 1秒ごとに更新
         setInterval(updateClock, 1000);
 
         const statusEl = document.querySelector('.attendance__status');
@@ -53,16 +49,14 @@
         const breakOutBtn = document.getElementById('breakOutBtn');
         const clockOutBtn = document.getElementById('clockOutBtn');
 
-        const initialState = @json($state); // 'none' | 'working' | 'on_break' | 'done'
+        const initialState = @json($state);
 
         function applyState(state) {
-            // 全ボタン一旦隠す
             clockInBtn.style.display  = 'none';
             breakInBtn.style.display  = 'none';
             breakOutBtn.style.display = 'none';
             clockOutBtn.style.display = 'none';
 
-            // 「お疲れ様でした。」の重複防止
             const oldMsg = buttonsEl.querySelector('.attendance__message');
             if (oldMsg) oldMsg.remove();
 
@@ -85,7 +79,6 @@
             }
         }
 
-        // ページロード時にサーバーの真実で初期化
         applyState(initialState);
 
         async function postJSON(url, body = {}) {
@@ -100,7 +93,6 @@
                 body: JSON.stringify(body)
             });
             if (!res.ok) {
-                // エラーメッセージを拾って投げ返す
                 let err;
                 try { err = await res.json(); } catch { err = { message: 'エラーが発生しました'}; }
                 throw err;
@@ -120,8 +112,8 @@
         // 出勤
         clockInBtn.addEventListener('click', async () => {
             try {
-                toggleButtonsDisabled(true); // 二度押し防止
-                await postJSON('{{ route("attendance.clockin") }}');
+                toggleButtonsDisabled(true);
+                await postJSON('{{ route("attendance.clockIn") }}');
                 applyState('working');
             } catch (e) {
                 alert(e.message ?? '出勤に失敗しました。');
@@ -160,7 +152,7 @@
         clockOutBtn.addEventListener('click', async () => {
             try {
                 toggleButtonsDisabled(true);
-                await postJSON('{{ route("attendance.clockout") }}');
+                await postJSON('{{ route("attendance.clockOut") }}');
                 applyState('done');
             } catch (e) {
                 alert(e.message ?? '退勤に失敗しました。');

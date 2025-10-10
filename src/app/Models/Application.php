@@ -9,7 +9,7 @@ class Application extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','admin_id','remark','status','approved_at'];
+    protected $fillable = ['user_id', 'admin_id', 'remark', 'status', 'approved_at'];
 
     public function user()
     {
@@ -34,15 +34,22 @@ class Application extends Model
     public function attendance()
     {
         return $this->hasOneThrough(
-            Attendance::class,     // 行き先
-            NewAttendance::class,  // 経由
-            'application_id',      // 経由テーブルのFK
-            'id',                  // 行き先のキー
-            'id',                  // 自分のキー
-            'attendance_id'        // 経由→行き先のFK
+            Attendance::class,
+            NewAttendance::class,
+            'application_id',
+            'id',
+            'id',
+            'attendance_id'
         );
     }
 
-    public function scopePending($q){ return $q->where('status','pending'); }
-    public function scopeApproved($q){ return $q->where('status','approved'); }
+    public function scopePending($q)
+    {
+        return $q->where('status', 'pending');
+    }
+
+    public function scopeApproved($q)
+    {
+        return $q->where('status', 'approved');
+    }
 }

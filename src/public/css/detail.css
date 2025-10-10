@@ -17,7 +17,6 @@ body {
     background: transparent;
 }
 
-/* カード全体 */
 .detail-card {
     background: #FFFFFF;
     border-radius: 10px;
@@ -42,7 +41,6 @@ body {
     background: #000000;
 }
 
-/* 各行 */
 .detail-row {
     display: grid;
     grid-template-columns: 180px 1fr;
